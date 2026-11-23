@@ -31,8 +31,12 @@ public class IdentificationQuestion extends Question {
     }
 
     @Override
-    public String getTypeName() {
-        return "Identification";
+    public QuestionType getType() {
+        return QuestionType.IDENTIFICATION;
+    }
+
+    public List<String> getAcceptedAnswers() {
+        return Collections.unmodifiableList(acceptedAnswers);
     }
 
     /** Typed questions have no buttons, so there are no choices to show. */

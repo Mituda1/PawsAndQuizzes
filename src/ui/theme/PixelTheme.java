@@ -80,6 +80,11 @@ public final class PixelTheme {
                 : new Font(Font.SANS_SERIF, Font.PLAIN, Math.round(size));
     }
 
+    /** A design-size font made the right size for real Swing components (tables, text boxes). */
+    public static Font scaled(Font designFont) {
+        return designFont.deriveFont((float) (designFont.getSize2D() * SCALE));
+    }
+
     public static boolean isPixelFontLoaded() {
         return PIXEL_FONT != null;
     }

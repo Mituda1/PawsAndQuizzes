@@ -7,5 +7,6 @@ public enum Screen {
     CATEGORY_SELECT,
     GAMEPLAY,
     LIBRARY,
+    QUESTION_FORM,
     LEADERBOARD
 }

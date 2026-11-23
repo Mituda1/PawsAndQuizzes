@@ -35,8 +35,13 @@ public class MultipleChoiceQuestion extends Question {
     }
 
     @Override
-    public String getTypeName() {
-        return "Multiple Choice";
+    public QuestionType getType() {
+        return QuestionType.MULTIPLE_CHOICE;
+    }
+
+    /** Position of the correct option in the original order. */
+    public int getCorrectIndex() {
+        return correctIndex;
     }
 
     /** Options in their original order. The quiz engine shuffles a copy when it plays the question. */
