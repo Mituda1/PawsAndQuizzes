@@ -1,6 +1,7 @@
 package manager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.TreeSet;
@@ -12,6 +13,10 @@ import model.Question;
  * Screens call these methods and never touch the list directly.
  */
 public class QuestionBank {
+
+    /** The three topics the game always offers, even when one of them has no questions yet. */
+    public static final List<String> DEFAULT_CATEGORIES =
+            Arrays.asList("General Knowledge", "Java OOP", "Science");
 
     private final List<Question> questions = new ArrayList<>();
 
@@ -77,6 +82,16 @@ public class QuestionBank {
     /** Every category in use, sorted A to Z, with no repeats. */
     public List<String> getCategories() {
         TreeSet<String> sorted = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+        for (Question q : questions) {
+            sorted.add(q.getCategory());
+        }
+        return new ArrayList<>(sorted);
+    }
+
+    /** The default topics plus any other topic in use, sorted A to Z. Used by the add/edit form. */
+    public List<String> getAllCategories() {
+        TreeSet<String> sorted = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+        sorted.addAll(DEFAULT_CATEGORIES);
         for (Question q : questions) {
             sorted.add(q.getCategory());
         }

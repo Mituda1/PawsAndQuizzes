@@ -13,9 +13,11 @@ import manager.QuestionBank;
 import manager.SampleQuestions;
 import model.GameSession;
 import ui.screens.CategorySelectPanel;
+import ui.screens.LibraryPanel;
 import ui.screens.MainMenuPanel;
 import ui.screens.PlaceholderPanel;
 import ui.screens.PlayerSetupPanel;
+import ui.screens.QuestionFormPanel;
 import ui.theme.PixelTheme;
 
 /**
@@ -46,7 +48,10 @@ public class MainFrame extends JFrame implements Navigator {
 
         // Temporary screens. Replace each one with the real panel as you build it.
         register(Screen.GAMEPLAY, new PlaceholderPanel("Game Arena", this, session::summary));
-        register(Screen.LIBRARY, new PlaceholderPanel("Question Library", this));
+
+        QuestionFormPanel questionForm = new QuestionFormPanel(this, questionBank);
+        register(Screen.QUESTION_FORM, questionForm);
+        register(Screen.LIBRARY, new LibraryPanel(this, questionBank, questionForm));
         register(Screen.LEADERBOARD, new PlaceholderPanel("Leaderboard", this));
 
         setContentPane(root);

@@ -16,13 +16,19 @@ public abstract class BaseScreenPanel extends JPanel {
     protected static final int CONTENT_WIDTH = 1152;
 
     private final String sectionLabel;
-    private final String stepText;
+    private String stepText;
 
     protected BaseScreenPanel(String sectionLabel, String stepText) {
         this.sectionLabel = sectionLabel;
         this.stepText = stepText;
         setLayout(null);
         setBackground(PixelTheme.CREAM);
+    }
+
+    /** Changes the small text at the top right (for example a live question count). */
+    protected void setStepText(String stepText) {
+        this.stepText = stepText;
+        repaint();
     }
 
     /** Draws the header, then asks the child to draw its own content. */
@@ -51,8 +57,13 @@ public abstract class BaseScreenPanel extends JPanel {
 
     /** Adds a component at a design-pixel position and size. */
     protected <T extends JComponent> T place(T component, int x, int y, int w, int h) {
-        component.setBounds(PixelTheme.px(x), PixelTheme.px(y), PixelTheme.px(w), PixelTheme.px(h));
+        setDesignBounds(component, x, y, w, h);
         add(component);
         return component;
+    }
+
+    /** Moves or resizes a component using design pixels. */
+    protected void setDesignBounds(JComponent component, int x, int y, int w, int h) {
+        component.setBounds(PixelTheme.px(x), PixelTheme.px(y), PixelTheme.px(w), PixelTheme.px(h));
     }
 }

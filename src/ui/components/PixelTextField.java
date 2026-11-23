@@ -1,6 +1,7 @@
 package ui.components;
 
 import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.BorderFactory;
@@ -15,13 +16,15 @@ import ui.theme.PixelTheme;
 public class PixelTextField extends JTextField {
 
     private static final Color FILL = new Color(0xFFFAF0);
+    private static final Color PLACEHOLDER = new Color(0x9A8A7A);
 
     private boolean error;
+    private String placeholder = "";
 
     public PixelTextField(int maxLength) {
         setOpaque(false);
         setBorder(BorderFactory.createEmptyBorder(0, PixelTheme.px(16), 0, PixelTheme.px(16)));
-        setFont(PixelTheme.body(24f).deriveFont((float) (24 * PixelTheme.SCALE)));
+        setFont(PixelTheme.scaled(PixelTheme.body(24f)));
         setForeground(PixelTheme.OUTLINE);
         setCaretColor(PixelTheme.OUTLINE);
         setSelectionColor(PixelTheme.YELLOW);
@@ -55,6 +58,12 @@ public class PixelTextField extends JTextField {
         repaint();
     }
 
+    /** Grey hint text shown while the box is empty. */
+    public void setPlaceholder(String placeholder) {
+        this.placeholder = placeholder == null ? "" : placeholder;
+        repaint();
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D box = PixelTheme.prepare(g);
@@ -72,6 +81,12 @@ public class PixelTextField extends JTextField {
         Graphics2D text = (Graphics2D) g.create();
         PixelTheme.hints(text);
         super.paintComponent(text);      // the typed text and the blinking cursor
+        if (getText().isEmpty() && !placeholder.isEmpty()) {
+            text.setFont(getFont());
+            text.setColor(PLACEHOLDER);
+            FontMetrics fm = text.getFontMetrics();
+            text.drawString(placeholder, getInsets().left, (getHeight() - fm.getHeight()) / 2 + fm.getAscent());
+        }
         text.dispose();
     }
 }

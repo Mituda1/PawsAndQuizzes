@@ -25,8 +25,8 @@ public abstract class Question implements Gradable {
 
     // ----- what each question type must provide -----
 
-    /** Short name shown in the GUI, e.g. "Multiple Choice". */
-    public abstract String getTypeName();
+    /** Which kind of question this is. */
+    public abstract QuestionType getType();
 
     /** Answer choices to display. Empty for typed (identification) questions. */
     public abstract List<String> getChoices();
@@ -35,6 +35,11 @@ public abstract class Question implements Gradable {
     public abstract String getCorrectAnswerText();
 
     // ----- shared behavior -----
+
+    /** Short name shown in the GUI, e.g. "Multiple Choice". */
+    public String getTypeName() {
+        return getType().getLabel();
+    }
 
     @Override
     public int getBasePoints() {

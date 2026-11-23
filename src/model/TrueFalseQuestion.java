@@ -16,8 +16,12 @@ public class TrueFalseQuestion extends Question {
     }
 
     @Override
-    public String getTypeName() {
-        return "True or False";
+    public QuestionType getType() {
+        return QuestionType.TRUE_FALSE;
+    }
+
+    public boolean isCorrectAnswer() {
+        return correctAnswer;
     }
 
     @Override
