@@ -11,14 +11,16 @@ import ui.theme.PixelTheme;
 
 /**
  * Flat pixel button: 2px dark border, yellow on hover, darker when pressed.
- * Text is left-aligned like the Figma design.
+ * Text is left-aligned by default (like the main menu) or centered with setCenterText(true).
  */
 public class PixelButton extends JButton {
 
     private static final int BORDER = 2;
+    private static final Color DISABLED_TEXT = new Color(0x8B7A6B);
 
     private final Color baseColor;
     private int textPadding = 70;
+    private boolean centerText;
 
     public PixelButton(String text, Color baseColor) {
         super(text);
@@ -36,6 +38,12 @@ public class PixelButton extends JButton {
     /** Space (in design pixels) between the button's left edge and its label. */
     public void setTextPadding(int textPadding) {
         this.textPadding = textPadding;
+        repaint();
+    }
+
+    /** Puts the label in the middle of the button instead of on the left. */
+    public void setCenterText(boolean centerText) {
+        this.centerText = centerText;
         repaint();
     }
 
@@ -65,9 +73,10 @@ public class PixelButton extends JButton {
 
         g2.setFont(getFont());
         FontMetrics fm = g2.getFontMetrics();
+        int x = centerText ? (w - fm.stringWidth(getText())) / 2 : textPadding;
         int baseline = (h - fm.getHeight()) / 2 + fm.getAscent() + (model.isPressed() ? 2 : 0);
-        g2.setColor(PixelTheme.OUTLINE);
-        g2.drawString(getText(), textPadding, baseline);
+        g2.setColor(isEnabled() ? PixelTheme.OUTLINE : DISABLED_TEXT);
+        g2.drawString(getText(), x, baseline);
         g2.dispose();
     }
 }

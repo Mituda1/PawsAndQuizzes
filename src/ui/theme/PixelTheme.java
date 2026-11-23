@@ -2,6 +2,7 @@ package ui.theme;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
@@ -9,6 +10,8 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.io.File;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * One place for colors, fonts and drawing helpers.
@@ -100,16 +103,40 @@ public final class PixelTheme {
 
     // ---------- drawing helpers ----------
 
-    /** Copy of the graphics with hard pixel edges, scaled to the design canvas. Dispose it when done. */
-    public static Graphics2D prepare(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
+    /** Applies the pixel-art rendering hints (hard edges, crisp text) without scaling. */
+    public static void hints(Graphics2D g2) {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
         boolean crisp = isPixelFontLoaded() && SCALE == 1.0;
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                 crisp ? RenderingHints.VALUE_TEXT_ANTIALIAS_OFF : RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+    }
+
+    /** Copy of the graphics with hard pixel edges, scaled to the design canvas. Dispose it when done. */
+    public static Graphics2D prepare(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g.create();
+        hints(g2);
         g2.scale(SCALE, SCALE);
         return g2;
+    }
+
+    /** Splits text into lines that fit inside maxWidth (design pixels), using the given font metrics. */
+    public static List<String> wrap(FontMetrics fm, String text, int maxWidth) {
+        List<String> lines = new ArrayList<>();
+        StringBuilder line = new StringBuilder();
+        for (String word : text.split(" ")) {
+            String attempt = line.length() == 0 ? word : line + " " + word;
+            if (fm.stringWidth(attempt) > maxWidth && line.length() > 0) {
+                lines.add(line.toString());
+                line = new StringBuilder(word);
+            } else {
+                line = new StringBuilder(attempt);
+            }
+        }
+        if (line.length() > 0) {
+            lines.add(line.toString());
+        }
+        return lines;
     }
 
     /** Flat box with a solid border: the basic building block of every pixel panel and button. */
