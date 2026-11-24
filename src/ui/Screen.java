@@ -6,6 +6,7 @@ public enum Screen {
     PLAYER_SETUP,
     CATEGORY_SELECT,
     GAMEPLAY,
+    RESULTS,
     LIBRARY,
     QUESTION_FORM,
     LEADERBOARD
