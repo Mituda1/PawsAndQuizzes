@@ -10,14 +10,17 @@ import javax.swing.JPanel;
 import manager.CatFactory;
 import manager.Leaderboard;
 import manager.QuestionBank;
+import manager.QuizEngine;
 import manager.SampleQuestions;
 import model.GameSession;
 import ui.screens.CategorySelectPanel;
+import ui.screens.LeaderboardPanel;
 import ui.screens.LibraryPanel;
 import ui.screens.MainMenuPanel;
-import ui.screens.PlaceholderPanel;
 import ui.screens.PlayerSetupPanel;
 import ui.screens.QuestionFormPanel;
+import ui.screens.QuizPanel;
+import ui.screens.ResultsPanel;
 import ui.theme.PixelTheme;
 
 /**
@@ -34,6 +37,7 @@ public class MainFrame extends JFrame implements Navigator {
     private final QuestionBank questionBank = new QuestionBank();
     private final Leaderboard leaderboard = new Leaderboard();
     private final GameSession session = new GameSession();
+    private final QuizEngine quizEngine = new QuizEngine(questionBank);
 
     public MainFrame() {
         super("Paws & Quizzes");
@@ -46,13 +50,13 @@ public class MainFrame extends JFrame implements Navigator {
         register(Screen.PLAYER_SETUP, new PlayerSetupPanel(this, session, CatFactory.createAll()));
         register(Screen.CATEGORY_SELECT, new CategorySelectPanel(this, session, questionBank));
 
-        // Temporary screens. Replace each one with the real panel as you build it.
-        register(Screen.GAMEPLAY, new PlaceholderPanel("Game Arena", this, session::summary));
+        register(Screen.GAMEPLAY, new QuizPanel(this, session, quizEngine, leaderboard));
+        register(Screen.RESULTS, new ResultsPanel(this, quizEngine, leaderboard));
+        register(Screen.LEADERBOARD, new LeaderboardPanel(this, quizEngine, leaderboard));
 
         QuestionFormPanel questionForm = new QuestionFormPanel(this, questionBank);
         register(Screen.QUESTION_FORM, questionForm);
         register(Screen.LIBRARY, new LibraryPanel(this, questionBank, questionForm));
-        register(Screen.LEADERBOARD, new PlaceholderPanel("Leaderboard", this));
 
         setContentPane(root);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -68,11 +72,11 @@ public class MainFrame extends JFrame implements Navigator {
 
     @Override
     public void goTo(Screen screen) {
+        cards.show(root, screen.name());
         JPanel panel = screens.get(screen);
         if (panel instanceof Refreshable) {
-            ((Refreshable) panel).refresh();
+            ((Refreshable) panel).refresh();   // after show(), so a screen may send the player somewhere else
         }
-        cards.show(root, screen.name());
     }
 
     @Override
