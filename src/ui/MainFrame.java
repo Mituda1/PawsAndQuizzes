@@ -24,8 +24,8 @@ import ui.screens.ResultsPanel;
 import ui.theme.PixelTheme;
 
 /**
- * The one and only window. It creates the shared game data (questions, scores, current run)
- * once and hands it to the screens that need it.
+ * the one and only window. this creates the shared game data (questions, scores, current run)
+ * once and hands it to the screens that need it
  */
 public class MainFrame extends JFrame implements Navigator {
 

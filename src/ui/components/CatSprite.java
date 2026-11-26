@@ -6,8 +6,8 @@ import model.Cat;
 import ui.theme.PixelTheme;
 
 /**
- * Draws a sitting cat from a 16x16 grid of letters, using the colors the Cat reports.
- * One shape, many cats: swap this for real sprite images when you choose your asset pack.
+ * draws a sitting cat from a 16x16 grid of letters
+ * one shape, many cats: 
  */
 public final class CatSprite {
 
@@ -46,7 +46,7 @@ public final class CatSprite {
 
     private CatSprite() { }
 
-    /** Draws the cat with its top-left corner at (x, y). Each sprite pixel becomes pixelSize screen pixels. */
+    /** draws the cat with its top-left corner at (x, y). Each sprite pixel becomes pixelSize screen pixels. */
     public static void draw(Graphics2D g2, Cat cat, int x, int y, int pixelSize) {
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {

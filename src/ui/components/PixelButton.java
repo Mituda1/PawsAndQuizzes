@@ -11,7 +11,7 @@ import ui.theme.PixelTheme;
 
 /**
  * Flat pixel button: 2px dark border, yellow on hover, darker when pressed.
- * Text is left-aligned by default (like the main menu) or centered with setCenterText(true).
+ * Text is left-aligned by default (like the one we did on main menu) or centered with setCenterText(true).
  */
 public class PixelButton extends JButton {
 

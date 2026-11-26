@@ -3,7 +3,7 @@ package ui.components;
 import java.awt.Graphics2D;
 import ui.theme.PixelTheme;
 
-/** Small pixel pictures drawn from letters, so no image files are needed. */
+/** Small pixel pictures drawn from letters using ai, so no image files are needed */
 public final class PixelIcons {
 
     private static final String[] HEART = {

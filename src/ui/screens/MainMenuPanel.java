@@ -12,7 +12,7 @@ import ui.theme.PixelTheme;
 
 /**
  * Screen 1: Main Menu. Layout numbers are in design pixels (1280x720)
- * and match the Figma frame. This class only builds the screen; it never
+ *  This class only builds the screen; it never
  * holds quiz or game logic.
  */
 public class MainMenuPanel extends JPanel {

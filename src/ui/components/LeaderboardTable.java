@@ -3,7 +3,7 @@ package ui.components;
 import java.awt.Color;
 import ui.theme.PixelTheme;
 
-/** The leaderboard. The row for the run you just played is painted mint. */
+/** The leader board. The row for the run we just played is painted mint. */
 public class LeaderboardTable extends PixelTable {
 
     private int highlightedRow = -1;

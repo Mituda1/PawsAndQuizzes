@@ -8,14 +8,14 @@ import model.MangoCat;
 import model.MidnightCat;
 
 /**
- * Factory pattern: the one place that knows how to build cats.
- * Screens ask for cats here and never write "new MangoCat()" themselves.
+ * factory pattern the one place that knows how to build cats
+ * screens ask for cats here and never write "new MangoCat()" themselves
  */
 public final class CatFactory {
 
     private CatFactory() { }
 
-    /** All playable cats, in the order they appear on the Player Setup screen. */
+    /** all playable cats, in the order they appear on the Player Setup screen */
     public static List<Cat> createAll() {
         return Arrays.asList(new MangoCat(), new MidnightCat(), new LunaCat());
     }

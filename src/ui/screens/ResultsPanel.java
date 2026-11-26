@@ -11,7 +11,7 @@ import ui.components.LeaderboardTableModel;
 import ui.components.PixelButton;
 import ui.theme.PixelTheme;
 
-/** Shown when a run ends. It reads the finished score from the engine and the rank from the leaderboard. */
+/** Shown when a run ends. It reads the finished score from the engine and the rank from the leader board. */
 public class ResultsPanel extends BaseScreenPanel implements Refreshable {
 
     private final QuizEngine engine;

@@ -15,8 +15,8 @@ import java.util.List;
 
 /**
  * One place for colors, fonts and drawing helpers.
- * Everything is designed on a 1280x720 canvas and scaled down automatically
- * if the screen is too small (for example 1366x768 laptops).
+ * designed on a 1280x720 canvas and scaled down automatically
+ * 
  */
 public final class PixelTheme {
 

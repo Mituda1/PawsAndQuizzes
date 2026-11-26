@@ -12,8 +12,8 @@ import ui.theme.PixelTheme;
 
 /**
  * Placeholder art for the main menu: a cozy room with a sitting cat.
- * Everything is drawn with rectangles, so no image files are needed yet.
- * Later, replace paintComponent with drawImage() calls using your asset pack sprites.
+ * Everything is drawn with rectangles using ai.
+ * Later, replace paintComponent if we want to change cat
  */
 public class RoomIllustration extends JPanel {
 

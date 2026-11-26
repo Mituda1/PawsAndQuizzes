@@ -4,7 +4,7 @@ import model.Cat;
 import model.Question;
 
 /**
- * Base points for the difficulty, plus up to 50% more for answering fast (multiplied by the cat's
+ * base points for the difficulty, plus up to 50% more for answering fast (multiplied by the cat's
  * speed perk), plus 25 for every extra right answer in a row (up to 100).
  */
 public class SpeedBonusScoring implements ScoringStrategy {

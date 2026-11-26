@@ -15,12 +15,12 @@ import model.Question;
 import model.QuestionType;
 
 /**
- * Runs one quiz from start to finish: picks the questions, shuffles options, grades answers,
+ * runs one quiz from start to finish: picks the questions, shuffles options, grades answers,
  * keeps score, hearts and combo, and builds the final PlayerScore.
  * It has no screen code and no timer. The screen counts the seconds and passes them in,
- * so this class can be tested by itself.
+ * so this class can be tested by itself
  *
- * The order of use is:  start()  then repeat [ currentQuestion(), submitAnswer(), advance() ]  then finish().
+ * the order of use is:  start()  then repeat [ currentQuestion(), submitAnswer(), advance() ]  then finish().
  */
 public class QuizEngine {
 
@@ -58,7 +58,7 @@ public class QuizEngine {
         this.random = random;
     }
 
-    /** Normal game: speed-bonus scoring and real randomness. */
+    /** normal game: speed-bonus scoring and real randomness */
     public QuizEngine(QuestionBank bank) {
         this(bank, new SpeedBonusScoring(), new Random());
     }
@@ -127,23 +127,23 @@ public class QuizEngine {
 
     // ----- asking and answering -----
 
-    /** The question being asked (or just answered). Null before start() and after the run ends. */
+    /** the question being asked (or just answered). null before start() and after the run ends */
     public Question currentQuestion() {
         return (state == State.ASKING || state == State.FEEDBACK) ? questions.get(index) : null;
     }
 
-    /** Options in the order to show them: shuffled for multiple choice, fixed for the others. */
+    /** options in the order to show them: shuffled for multiple choice, fixed for the others. */
     public List<String> currentChoices() {
         return Collections.unmodifiableList(currentChoices);
     }
 
-    /** Seconds allowed for the current question, including the cat's bonus time. */
+    /** seconds allowed for the current question, including the cat's bonus time */
     public int currentTimeLimit() {
         requireQuestion();
         return questions.get(index).getTimeLimitSeconds() + cat.getBonusSeconds();
     }
 
-    /** Grades the answer. Pass null for answer when time ran out (or call timeUp()). */
+    /** grades the answer. Pass null for answer when time ran out (or call timeUp()) */
     public AnswerResult submitAnswer(String answer, int secondsLeft) {
         requireState(State.ASKING, "No question is waiting for an answer");
         Question q = questions.get(index);
@@ -178,7 +178,7 @@ public class QuizEngine {
         return state == State.ASKING && skipsLeft > 0;
     }
 
-    /** Uses one free skip: no points, no lost heart, straight to the next question. */
+    /** uses one free skip: no points, no lost heart, straight to the next question */
     public void skip() {
         if (!canSkip()) {
             throw new IllegalStateException("No skips left");
@@ -187,7 +187,7 @@ public class QuizEngine {
         moveOn();
     }
 
-    /** Call after the feedback has been shown. */
+    /** call after the feedback has been shown */
     public void advance() {
         requireState(State.FEEDBACK, "There is no answer to move on from");
         moveOn();
@@ -209,7 +209,7 @@ public class QuizEngine {
         return state == State.FINISHED;
     }
 
-    /** Builds the final score. Safe to call more than once: you always get the same object back. */
+    /** builds the final score. Safe to call more than once: you always get the same object back */
     public PlayerScore finish() {
         requireState(State.FINISHED, "The run is not finished yet");
         if (finalScore == null) {
@@ -218,7 +218,7 @@ public class QuizEngine {
         return finalScore;
     }
 
-    /** The finished run's score, or null if no run has finished. */
+    /** the finished run's score, or null if no run has finished */
     public PlayerScore getLastScore() {
         return finalScore;
     }
@@ -233,7 +233,7 @@ public class QuizEngine {
         return questions.size();
     }
 
-    /** True when answering the current question is the last thing left to do in this run. */
+    /** true when answering the current question is the last thing left to do in this run */
     public boolean isLastWave() {
         return index + 1 >= questions.size();
     }

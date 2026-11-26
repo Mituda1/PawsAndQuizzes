@@ -7,8 +7,7 @@ import model.MultipleChoiceQuestion;
 import model.TrueFalseQuestion;
 
 /**
- * Starter questions so the game is playable on day one.
- * Add many more later (aim for 10+ per category per difficulty) and check every answer.
+ * starter questions 
  */
 public final class SampleQuestions {
 
@@ -18,7 +17,7 @@ public final class SampleQuestions {
 
     private SampleQuestions() { }
 
-    /** Fills the given bank with the starter questions. */
+    /** fills the given bank with the starter questions */
     public static void loadInto(QuestionBank bank) {
         loadJavaOop(bank);
         loadGeneralKnowledge(bank);

@@ -9,7 +9,7 @@ import ui.Screen;
 import ui.components.PixelButton;
 import ui.theme.PixelTheme;
 
-/** Stand-in for screens you have not built yet. Delete it once every screen is real. */
+/** Stand-in for screens we have not built yet */
 public class PlaceholderPanel extends JPanel {
 
     private final String title;
@@ -19,7 +19,7 @@ public class PlaceholderPanel extends JPanel {
         this(title, navigator, null);
     }
 
-    /** The optional detail line is asked for every time the panel is drawn (handy for showing the session). */
+    /** The optional detail line is asked for every time the panel is drawn  */
     public PlaceholderPanel(String title, Navigator navigator, Supplier<String> detail) {
         this.title = title;
         this.detail = detail;

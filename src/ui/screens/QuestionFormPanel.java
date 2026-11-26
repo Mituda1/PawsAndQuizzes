@@ -22,7 +22,7 @@ import ui.theme.PixelTheme;
 
 /**
  * Screen: add a new question or edit an existing one.
- * The form copies what you typed into a QuestionDraft. The draft builds the real question
+ * The form copies what we have typed into a QuestionDraft. The draft builds the real question
  * (or says what is wrong), and the QuestionBank stores it.
  */
 public class QuestionFormPanel extends BaseScreenPanel {
