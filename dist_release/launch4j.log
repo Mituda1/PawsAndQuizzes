@@ -1,0 +1,21 @@
+
+
+Version:	3.50
+CmdLine:	C:\Users\jerem\OneDrive\Documents\NetBeansProjects\PawsAndQuizzes\dist_release\PawsAndQuizzes.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Users\jerem\OneDrive\Documents\NetBeansProjects\PawsAndQuizzes\dist_release\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	1.021.000
+Java max ver:	
+Substitute:	JAVA_HOME = C:\Program Files\Microsoft\jdk-21.0.12.101-hotspot\
+Substitute:	PATH = C:\Program Files\Microsoft\jdk-21.0.12.101-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\scrcpy\scrcpy-win64-v3.2\scrcpy-win64-v3.2;C:\protoc\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\jerem\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\jerem\AppData\Local\Programs\Python\Python311\;C:\Program Files\Eclipse Adoptium\jdk-17.0.18.8-hotspot\bin;C:\Users\jerem\AppData\Local\Muse Hub\lib;C:\Users\jerem\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\jerem\AppData\Local\Programs\Python\Python313\;C:\Users\jerem\AppData\Local\Microsoft\WindowsApps;C:\Users\jerem\AppData\Local\spicetify;C:\Users\jerem\AppData\Local\Microsoft\WindowsApps;C:\Users\jerem\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\jerem\AppData\Roaming\npm;C:\Program Files\Microsoft\jdk-21.0.12.101-hotspot\\bin
+JRE paths:	C:\Program Files\Microsoft\jdk-21.0.12.101-hotspot\;C:\Program Files\Microsoft\jdk-21.0.12.101-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\scrcpy\scrcpy-win64-v3.2\scrcpy-win64-v3.2;C:\protoc\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\jerem\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\jerem\AppData\Local\Programs\Python\Python311\;C:\Program Files\Eclipse Adoptium\jdk-17.0.18.8-hotspot\bin;C:\Users\jerem\AppData\Local\Muse Hub\lib;C:\Users\jerem\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\jerem\AppData\Local\Programs\Python\Python313\;C:\Users\jerem\AppData\Local\Microsoft\WindowsApps;C:\Users\jerem\AppData\Local\spicetify;C:\Users\jerem\AppData\Local\Microsoft\WindowsApps;C:\Users\jerem\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\jerem\AppData\Roaming\npm;C:\Program Files\Microsoft\jdk-21.0.12.101-hotspot\\bin
+Check launcher:	C:\Program Files\Microsoft\jdk-21.0.12.101-hotspot\bin\javaw.exe (OK)
+Warning:	formatJavaVersion() too many parts added.
+Version string: 1.021.000_012 / 64-Bit (OK)
+Launcher:	C:\Program Files\Microsoft\jdk-21.0.12.101-hotspot\bin\javaw.exe
+Launcher args:	-jar "C:\Users\jerem\OneDrive\Documents\NetBeansProjects\PawsAndQuizzes\dist_release\PawsAndQuizzes.exe"
+Args length:	104/32768 chars
+Exit code:	0
